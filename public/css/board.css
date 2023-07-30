@@ -11,21 +11,30 @@
     box-sizing: border-box;
     font-family: "Ubuntu", sans-serif;
 }
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    z-index: -2;
+}
 .wrapper {
     height: 100%;
-    width: 300px;
+    width: 100%;
     position: relative;
 }
 .wrapper .menu-btn {
     position: absolute;
-    left: 20px;
-    top: 10px;
-    background: #4a4a4a;
-    color: #fff;
+    left: 10px;
+    top: 25px;
+    background-color: white;
+    color: #1f2041;
     height: 45px;
     width: 45px;
     z-index: 9999;
-    border: 1px solid #333;
+    border: 2px solid #fff;
     border-radius: 5px;
     cursor: pointer;
     display: flex;
@@ -78,6 +87,7 @@
     background: #1f2041;
     width: 100%;
     height: 100%;
+    font-variant: small-caps;
     list-style: none;
 }
 #sidebar .list-items li {
@@ -125,23 +135,19 @@
     display: block;
     margin: 0 5px;
     font-size: 18px;
-    color: #f2f2f2;
-    background: #4a4a4a;
+    color: #1f2041;
+    background: white;
     border-radius: 5px;
     border: 1px solid #383838;
     transition: all 0.3s ease;
 }
 #sidebar .list-items .icons a:hover {
-    background: #404040;
+    color: #37a868;
 }
 .list-items .icons a:first-child {
     margin-left: 0px;
 }
 .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: #202020;
     z-index: -1;
     width: 100%;
@@ -150,6 +156,13 @@
 .content .header {
     font-size: 45px;
     font-weight: 700;
+    margin-bottom: 50px;
+    padding: 20px 100px;
+    display: flex;
+    background-color: #2b2b2b;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
 }
 .content p {
     font-size: 40px;
@@ -157,4 +170,263 @@
 }
 .active {
     background-color: #4b3f72;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 0 30px;
+}
+
+.container .card {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    background: #232323;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: default;
+}
+
+.container .card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #37a868;
+    clip-path: circle(150px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before {
+    clip-path: circle(300px at 80% -50%);
+}
+
+.container .card:after {
+    position: absolute;
+    top: 30%;
+    left: -20%;
+    font-size: 12em;
+    font-weight: 800;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.04);
+}
+
+.container .card .imgBx {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+
+.container .card:hover .imgBx {
+    top: 0%;
+    transform: translateY(-30%);
+    /* bug  */
+}
+
+.container .card .imgBx img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(20deg);
+    width: 270px;
+}
+
+.container .card .contentBx {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    transition: 1s;
+    z-index: 90;
+}
+
+.container .card:hover .contentBx {
+    height: 210px;
+}
+
+.container .card .contentBx h2 {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.container .card .contentBx .price,
+.container .card .contentBx .description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.container .card:hover .contentBx .price {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.5s;
+}
+
+.container .card:hover .contentBx .description {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.6s;
+}
+
+.container .card .contentBx .price h3,
+.container .card .contentBx .description p {
+    color: white;
+    font-weight: 300;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 10px;
+}
+
+.container .card .contentBx .price span {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    display: inline-block;
+    color: #111;
+    background: #fff;
+    margin: 0 5px;
+    transition: 0.5s;
+    color: #111;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.container .card .contentBx a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #111;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.5s;
+}
+
+.container .card:hover .contentBx a {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-delay: 0.7s;
+}
+
+.contentBx .favorite-btn {
+    transition: 0.2s;
+}
+.contentBx .favorite-btn:hover i {
+    color: red;
+}
+i {
+    transition: 0.2s;
+}
+
+.contentBx .cart-btn:hover i {
+    color: #37a868;
+}
+.LogOut {
+    padding: 10px 15px;
+    font-family: "Ubuntu", sans-serif;
+    background-color: red;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.LogOut:hover {
+    background-color: white;
+    color: red;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.card-menu {
+    position: absolute;
+    z-index: 999;
+    top: 15px;
+    right: 15px;
+    padding: 5px 8px;
+    background-color: white;
+    border-radius: 3px;
+    cursor: default;
+    transition: 0.15s;
+}
+.card-menu:hover {
+    background-color: #174129;
+    color: white;
+}
+.menu-options {
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0.733);
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    border-radius: 5px;
+    right: -150px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+.btn {
+    padding: 5px 10px;
+    font-family: "Ubuntu", sans-serif;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.btn:active {
+    opacity: 0.6;
+}
+
+.edit-item-btn {
+    background-color: black;
+    color: white;
+}
+.edit-item-btn:hover {
+    background-color: #797979;
+}
+.delete-item-btn {
+    background-color: red;
+    color: white;
+}
+.delete-item-btn:hover {
+    background-color: rgb(124, 0, 0);
+}
+
+#cardMenuBtn:checked ~ .menu-options {
+    right: 15px;
 }
