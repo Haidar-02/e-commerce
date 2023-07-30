@@ -27,7 +27,7 @@ body {
 }
 .wrapper .menu-btn {
     position: absolute;
-    left: 10px;
+    left: 25px;
     top: 25px;
     background-color: white;
     color: #1f2041;
@@ -163,6 +163,7 @@ body {
     color: white;
     justify-content: space-between;
     align-items: center;
+    text-transform: uppercase;
 }
 .content p {
     font-size: 40px;
@@ -179,7 +180,7 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin: 0 30px;
+    margin: 30px;
 }
 
 .container .card {
@@ -417,7 +418,7 @@ i {
     color: white;
 }
 .edit-item-btn:hover {
-    background-color: #797979;
+    background-color: #37a868;
 }
 .delete-item-btn {
     background-color: red;
@@ -429,4 +430,16 @@ i {
 
 #cardMenuBtn:checked ~ .menu-options {
     right: 15px;
+}
+
+.add-new-item {
+    background-color: #37a868;
+    color: white;
+    padding: 10px 15px;
+}
+.add-new-item:hover {
+    background-color: #111;
+}
+#itemCategory {
+    font-weight: bold;
 }

@@ -13,7 +13,6 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         />
-
         <title>Board</title>
     </head>
     <body>
@@ -55,11 +54,12 @@
                 </ul>
             </nav>
         </div>
-        <div class="content">
+        <div class="content" >
             <div class="header">
                 Dashboard
                 <button class="LogOut">Log Out</button>
             </div>
+            <div><button class="btn add-new-item">Add New Item</button></div>
             <div class="container">
                 <div class="card">
                     <div class="imgBx">
@@ -98,5 +98,6 @@
                 </div>
             </div>
         </div>
+        <script src="{{ URL('js/board.js') }}"></script>
     </body>
 </html>
