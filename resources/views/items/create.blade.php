@@ -63,7 +63,7 @@
         </div>
         <div class="content" >
             <div class="header">
-            <a href="/">Dashboard</a>
+            <a href="/items/index">Dashboard</a>
             </div>
             @if($message = Session::get("success"))
             <p id="success">Item Added</p>
@@ -132,7 +132,7 @@
                         required
                     />
                 </div>
-                    <a href="/" class="btn cancelBtn" id="cancelBtn">Discard</a>
+                    <a href="/items/index" class="btn cancelBtn" id="cancelBtn">Discard</a>
                     <button type="submit" class="submit-btn" id="SubmitButton">Add Item</button>
                 </form>
             </div>

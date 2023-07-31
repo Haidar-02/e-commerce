@@ -26,7 +26,9 @@
                 <div class="title">Ecommerce</div>
                 <ul class="list-items">
                     <li class="active">
-                        <a href="#"><i class="fas fa-home"></i>Board</a>
+                        <a href="/items/index"
+                            ><i class="fas fa-home"></i>Board</a
+                        >
                     </li>
                     <li>
                         <a href="#"
@@ -48,7 +50,8 @@
                     </li>
                     <li>
                         <a href="#"
-                            ><i class="fa-solid fa-right-from-bracket"></i>Log Out</a
+                            ><i class="fa-solid fa-right-from-bracket"></i>Log
+                            Out</a
                         >
                     </li>
                     <div class="icons">
@@ -59,18 +62,20 @@
                 </ul>
             </nav>
         </div>
-        <div class="content" >
+        <div class="content">
             <div class="header">
-                <a href="/">Dashboard</a>
+                <a href="/items/index">Dashboard</a>
             </div>
-            <div><a href="/items/create" class="btn add-new-item">Add New Item</a></div>
+            <div>
+                <a href="/items/create" class="btn add-new-item"
+                    >Add New Item</a
+                >
+            </div>
             <div class="container">
                 @foreach($items as $item)
                 <div class="card">
                     <div class="imgBx">
-                        <img
-                            src="items/{{ $item->image}}"
-                        />
+                        <img src="items/{{ $item->image }}" />
                     </div>
                     <div class="contentBx">
                         <h2 id="itemTitle">{{$item->title}}</h2>
@@ -90,8 +95,24 @@
                         ></a>
                     </div>
                     <div class="menu-options">
-                        <a href="items/{{$item->id}}/edit" class="btn edit-item-btn" id="EditItem"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="items/{{$item->id}}/delete" class="btn delete-item-btn" id="deleteItem"><i class="fa-solid fa-trash"></i></a>
+                        <form
+                            action="{{ route('items.edit', ['id' => $item->id]) }}"
+                            method="GET"
+                        >
+                            @csrf
+                            <button type="submit" class="btn edit-item-btn">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </form>
+                        <form
+                            action="{{ route('items.destroy', ['id' => $item->id]) }}"
+                            method="POST"
+                        >
+                            @csrf
+                            <button type="submit" class="btn delete-item-btn">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 @endforeach

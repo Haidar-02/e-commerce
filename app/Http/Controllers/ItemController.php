@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+    public function landing(){
+        return view('landing');
+    }
     public function index(){
         $items = Item::get();
         return view('items.index',['items'=>$items]);

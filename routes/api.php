@@ -15,12 +15,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('user',[App\Http\Controllers\AuthController::class]);
-
-
-Route::get('/', [ItemController::class,'index'])->name('items.index');
-Route::get('/items/create', [ItemController::class,'create'])->name('items.create');
-Route::post('/items/store', [ItemController::class,'store'])->name('items.store');
-Route::get('/items/{id}/edit', [ItemController::class,'edit']);
-Route::put('/items/{id}/update', [ItemController::class,'update']);
-Route::get('/items/{id}/delete', [ItemController::class,'destroy']);

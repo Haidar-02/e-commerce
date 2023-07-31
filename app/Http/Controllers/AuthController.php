@@ -14,6 +14,9 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
+    public function loginPage(){
+        return view('auth.login');
+    }
     public function login(Request $request)
     {
         $request->validate([
@@ -41,6 +44,9 @@ class AuthController extends Controller
             ]);
     }
 
+    public function registerPage(){
+        return view('auth.register');
+    }
     public function register(Request $request){
         $request->validate([
             'name' => 'required|string|max:255',
@@ -52,6 +58,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' =>'Admin'
         ]);
 
         $token = Auth::login($user);

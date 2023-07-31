@@ -10,7 +10,13 @@
 <body>
     <nav class="navbar">
         <h1>Welcome to Our Website</h1>
-        <button class="btn btn-signin">sign in</button>
+        <form
+            action="{{ route('auth.login')}}"
+            method="get"
+        >
+            @csrf
+            <button class="btn btn-signin">sign in</button>
+        </form>
     </nav>
     <div class="container">
         <div class="section-top">
@@ -32,7 +38,7 @@
         </div>   
         <div class="register-container">
             <p class="register-desc">Create a new account and discover our ecommerce platform</p>
-            <button class="btn register-btn">Join Now</button>
+            <a href="auth/register" class="btn register-btn">Join Now</a>
         </div>     
     </div>
 </body>
