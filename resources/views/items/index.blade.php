@@ -46,6 +46,11 @@
                             ><i class="fas fa-envelope"></i>Contact us</a
                         >
                     </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fa-solid fa-right-from-bracket"></i>Log Out</a
+                        >
+                    </li>
                     <div class="icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -56,27 +61,26 @@
         </div>
         <div class="content" >
             <div class="header">
-                Dashboard
-                <button class="LogOut">Log Out</button>
+                <a href="/">Dashboard</a>
             </div>
-            <div><button class="btn add-new-item">Add New Item</button></div>
+            <div><a href="/items/create" class="btn add-new-item">Add New Item</a></div>
             <div class="container">
+                @foreach($items as $item)
                 <div class="card">
                     <div class="imgBx">
                         <img
-                            src="http://pngimg.com/uploads/running_shoes/running_shoes_PNG5782.png"
-                            alt="nike-air-shoe"
+                            src="items/{{ $item->image}}"
                         />
                     </div>
                     <div class="contentBx">
-                        <h2 id="itemTitle">Title</h2>
+                        <h2 id="itemTitle">{{$item->title}}</h2>
                         <div class="price">
                             <h3>Price :</h3>
-                            <span id="itemPrice">$7</span>
+                            <span id="itemPrice"> {{$item->price}}$</span>
                         </div>
                         <div class="description">
-                            <p id="itemCategory">Category Here</p>
-                            <p id="itemDescription">Description here</p>
+                            <p id="itemCategory">{{$item->category}}</p>
+                            <p id="itemDescription">{{$item->description}}</p>
                         </div>
                         <a href="#" class="cart-btn"
                             >Add to <i class="fa-solid fa-cart-shopping"></i
@@ -85,17 +89,12 @@
                             ><i class="fa-solid fa-heart"></i
                         ></a>
                     </div>
-                        <input type="checkbox" id="cardMenuBtn" hidden>
-                        <label for="cardMenuBtn">                    
-                            <div class="card-menu">
-                                <i class="fa-solid fa-ellipsis"></i>                    
-                            </div> 
-                        </label>
                     <div class="menu-options">
-                        <button class="btn edit-item-btn" id="EditItem">Edit</button>
-                        <button class="btn delete-item-btn" id="deleteItem">Delete</button>
+                        <a href="items/{{$item->id}}/edit" class="btn edit-item-btn" id="EditItem"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="items/{{$item->id}}/delete" class="btn delete-item-btn" id="deleteItem"><i class="fa-solid fa-trash"></i></a>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
         <script src="{{ URL('js/board.js') }}"></script>

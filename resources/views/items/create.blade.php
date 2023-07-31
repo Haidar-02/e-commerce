@@ -9,6 +9,8 @@
             href="https://fonts.googleapis.com/css?family=Ubuntu"
             rel="stylesheet"
         />
+        <link href="{{ URL('css/board.css') }}" rel="stylesheet" />
+
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -16,13 +18,64 @@
         <title>Add Item Page</title>
     </head>
     <body>
-        <div class="container">
+    <div class="wrapper">
+            <input type="checkbox" id="btn" hidden />
+            <label for="btn" class="menu-btn">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </label>
+            <nav id="sidebar">
+                <div class="title">Ecommerce</div>
+                <ul class="list-items">
+                    <li class="active">
+                        <a href="#"><i class="fas fa-home"></i>Board</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fa-solid fa-cart-shopping"></i>Cart</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fa-solid fa-heart"></i>Favorites</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-user"></i>Profile</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-envelope"></i>Contact us</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fa-solid fa-right-from-bracket"></i>Log Out</a
+                        >
+                    </li>
+                    <div class="icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <div class="content" >
+            <div class="header">
+            <a href="/">Dashboard</a>
+            </div>
+            @if($message = Session::get("success"))
+            <p id="success">Item Added</p>
+            @endif
+        <div class="formBox">
             <div class="left-section">
                 <h2>Add Item</h2>
-                <form>
+                <form method="POST" action="/items/store" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
                         <label for="itemTitle">Item Title</label>
-                        <input type="text" id="itemTitle" required class="form-element"/>
+                        <input type="text" id="itemTitle" required class="form-element" name="title"/>
                     </div>
                     <div class="form-group">
                         <label for="itemDescription">Item Description</label>
@@ -30,6 +83,7 @@
                             type="text"
                             id="itemDescription"
                             class="form-element"
+                            name="description"
                             required
                         />
                     </div>
@@ -38,14 +92,15 @@
                         <input
                             type="number"
                             id="itemPrice"
+                            name="price"
                             step="0.01"
                             required
                             class="form-element"
                         />
                     </div>
                     <div class="form-group">
-                        <label for="itemCategory">Item Category</label>
-                        <Select id="itemCategory" class="form-element" required>
+                        <label for="itemCategoryInput">Item Category</label>
+                        <Select id="itemCategoryInput" class="form-element" required name="category">
                             <option value="" selected disabled>Select a Category</option>
                             <option value="Home & Kitchen">Home & Kitchen</option>
                             <option value="Books">Books</option>
@@ -69,6 +124,7 @@
                         <label for="itemImage">Item Image</label>
                         <input
                         type="file"
+                        name="image"
                         id="itemImage"
                         accept="image/*"
                         class="form-element"
@@ -76,7 +132,8 @@
                         required
                     />
                 </div>
-                    <button type="submit" class="submit-btn" id="SubmitButton">ADD ITEM</button>
+                    <a href="/" class="btn cancelBtn" id="cancelBtn">Discard</a>
+                    <button type="submit" class="submit-btn" id="SubmitButton">Add Item</button>
                 </form>
             </div>
             <div class="right-section">
@@ -85,7 +142,7 @@
                 </div>    
             </div>
         </div>
-
+        </div>
         <script src="{{ URL('js/addNewItem.js') }}"></script>
     </body>
 </html>
