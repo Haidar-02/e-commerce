@@ -14,7 +14,5 @@ SubmitSignInBtn.addEventListener("click", function () {
             signinPasswordError.textContent = "Password Required";
         }
         return;
-    } else {
-        //signin
     }
 });

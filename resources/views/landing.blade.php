@@ -11,7 +11,7 @@
     <nav class="navbar">
         <h1>Welcome to Our Website</h1>
         <form
-            action="{{ route('auth.login')}}"
+            action="{{ route('login')}}"
             method="get"
         >
             @csrf
@@ -38,7 +38,13 @@
         </div>   
         <div class="register-container">
             <p class="register-desc">Create a new account and discover our ecommerce platform</p>
-            <a href="auth/register" class="btn register-btn">Join Now</a>
+            <form
+            action="{{ route('register')}}"
+            method="get"
+        >
+            @csrf
+            <button class="btn register-btn">Join Now</button>
+        </form>
         </div>     
     </div>
 </body>

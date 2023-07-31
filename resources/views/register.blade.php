@@ -13,7 +13,7 @@
 
     <body>
         <img src="{{ URL('assets/bg2.jpg') }}" alt="" class="back_img" />
-        <div class="register-container">
+        <form class="register-container" action="{{ route('register') }}" method="POST">
             <h1>Register New Account</h1>
             <div class="form-content">
                 <div class="error" id="nameError"></div>
@@ -21,6 +21,7 @@
                 <input
                     type="text"
                     id="Name"
+                    name="name"
                     class="form-element"
                     autocomplete="off"
                     spellcheck="false"
@@ -32,13 +33,14 @@
                     type="text"
                     id="Email"
                     class="form-element"
+                    name="email"
                     autocomplete="off"
                     spellcheck="false"
                     placeholder="Email here.."
                 />
                 <div class="error" id="passwordError"></div>
                 <label for="Password" class="form-label">Password</label>
-                <input type="password" id="Password" class="form-element" />
+                <input type="password" id="Password" class="form-element" name="password"/>
                 
                 <div>
                     <input
@@ -50,14 +52,11 @@
                     <label for="ShowPassword" class="form-label"
                         >Show Password</label>
                 </div>
-                <button class="btn btn-register" id="SubmitRegisterBtn">
+                <button class="btn btn-register" id="SubmitRegisterBtn" type="submit">
                     Create Account
                 </button>
             </div>
-            <p>
-                Already have an account?<a id="signinSectionButton"> Sign in</a>
-            </p>
-        </div>
+        </form>
         <script src="{{ URL('js/Register.js') }}"></script>
     </body>
 </html>

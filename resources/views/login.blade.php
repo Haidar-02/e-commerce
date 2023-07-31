@@ -15,7 +15,7 @@
         <img src="{{ URL('assets/bg2.jpg') }}" alt="" class="back_img" />
         <div class="signin-container">
             <h1>Sign In</h1>
-            <div class="form-content">
+            <form class="form-content" method="POST" enctype="multipart/form-data" action="{{ route('login') }}">
                 <div class="error" id="signinEmailError"></div>
                 <label for="SignInEmail" class="form-label">Email</label>
                 <input
@@ -35,12 +35,7 @@
                 <button class="btn btn-signin" id="SubmitSignInBtn">
                     Sign In
                 </button>
-            </div>
-            <p>
-                Don't have an account?<a id="signupSectionButton"
-                    > Register Now</a
-                >
-            </p>
+            </form>
         </div>
 
         <script src="{{ URL('js/Signin.js') }}"></script>

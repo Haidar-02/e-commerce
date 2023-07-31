@@ -8,8 +8,6 @@ const passwordError = document.getElementById("passwordError");
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 submitRegisterBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-
     nameError.textContent = "";
     if (emailError.textContent !== "Invalid email format") {
         emailError.textContent = "";
@@ -21,6 +19,8 @@ submitRegisterBtn.addEventListener("click", function (event) {
         emailInput.value.trim() === "" ||
         passwordInput.value.length < 8
     ) {
+        event.preventDefault();
+
         if (nameInput.value.trim() === "") {
             nameError.textContent = "Name is required";
         }
@@ -42,8 +42,6 @@ submitRegisterBtn.addEventListener("click", function (event) {
         }
 
         return;
-    } else {
-        //register
     }
 });
 emailInput.addEventListener("input", function () {

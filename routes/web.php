@@ -15,19 +15,17 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', [ItemController::class,'landing'])->name('landing');
-Route::get('/items/index', [ItemController::class,'index'])->name('index');
-Route::get('/items/create', [ItemController::class,'create'])->name('items.create');
-Route::post('/items/store', [ItemController::class,'store'])->name('items.store');
-Route::get('/items/{id}/edit', [ItemController::class,'edit'])->name('items.edit');
-Route::put('/items/{id}/update', [ItemController::class,'update'])->name('items.update');
-Route::post('/items/{id}/delete', [ItemController::class,'destroy'])->name('items.destroy');
+// Route::get('/', [ItemController::class,'landing'])->name('landing');
+// Route::get('/items/index', [ItemController::class,'index'])->name('index');
+// Route::get('/items/create', [ItemController::class,'create'])->name('items.create');
+// Route::post('/items/store', [ItemController::class,'store'])->name('items.store');
+// Route::get('/items/{id}/edit', [ItemController::class,'edit'])->name('items.edit');
+// Route::put('/items/{id}/update', [ItemController::class,'update'])->name('items.update');
+// Route::post('/items/{id}/delete', [ItemController::class,'destroy'])->name('items.destroy');
 
-Route::controller(AuthController::class)->group(function () {
-    Route::get('auth/register', 'registerPage')->name('register.Page');
-    Route::post('auth/register', 'register')->name('register');
-  
-    Route::get('login', 'loginPage')->name('auth.login');
-    Route::post('login', 'login')->name('login');
-    Route::get('logout', 'logout')->middleware('auth')->name('logout');
-});
+// Route::group(['middleware' => 'guest'], function () {
+//     Route::get('/register', [AuthController::class, 'register'])->name('register');
+//     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
+//     Route::get('/login', [AuthController::class, 'login'])->name('login');
+//     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+// });
