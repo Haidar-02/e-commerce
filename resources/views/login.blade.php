@@ -15,13 +15,15 @@
         <img src="{{ URL('assets/bg2.jpg') }}" alt="" class="back_img" />
         <div class="signin-container">
             <h1>Sign In</h1>
-            <form class="form-content" method="POST" enctype="multipart/form-data" action="{{ route('login') }}">
+            <form class="form-content" method="POST" enctype="multipart/form-data" action="{{ route('loginPost') }}">
+                @csrf
                 <div class="error" id="signinEmailError"></div>
                 <label for="SignInEmail" class="form-label">Email</label>
                 <input
                     type="text"
                     id="SignInEmail"
                     class="form-element"
+                    name="email"
                     autocomplete="off"
                     spellcheck="false"
                 />
@@ -30,9 +32,10 @@
                 <input
                     type="password"
                     id="SignInPassword"
+                    name="password"
                     class="form-element"
                 />
-                <button class="btn btn-signin" id="SubmitSignInBtn">
+                <button class="btn btn-signin" id="SubmitSignInBtn" type="submit">
                     Sign In
                 </button>
             </form>

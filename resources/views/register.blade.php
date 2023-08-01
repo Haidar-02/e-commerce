@@ -13,7 +13,8 @@
 
     <body>
         <img src="{{ URL('assets/bg2.jpg') }}" alt="" class="back_img" />
-        <form class="register-container" action="{{ route('register') }}" method="POST">
+        <form class="register-container" action="{{ route('registerPost') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <h1>Register New Account</h1>
             <div class="form-content">
                 <div class="error" id="nameError"></div>

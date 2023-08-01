@@ -10,13 +10,7 @@
 <body>
     <nav class="navbar">
         <h1>Welcome to Our Website</h1>
-        <form
-            action="{{ route('login')}}"
-            method="get"
-        >
-            @csrf
-            <button class="btn btn-signin">sign in</button>
-        </form>
+            <a href="{{ route('login')}}" class="btn btn-signin">sign in</a>
     </nav>
     <div class="container">
         <div class="section-top">
@@ -38,13 +32,7 @@
         </div>   
         <div class="register-container">
             <p class="register-desc">Create a new account and discover our ecommerce platform</p>
-            <form
-            action="{{ route('register')}}"
-            method="get"
-        >
-            @csrf
-            <button class="btn register-btn">Join Now</button>
-        </form>
+            <a href="{{ route('register')}}" class="btn btn-signin">Join Now</a>
         </div>     
     </div>
 </body>
