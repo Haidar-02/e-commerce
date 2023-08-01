@@ -3,6 +3,4 @@
 ### missing features:
 
 -   user roles
--   Jwt Implemention: Did not Work so used custom authentication in order to complete features:
-    -   add to cart
-    -   favorites
+-   Jwt Implemention: Did not Work so used custom authentication in order to complete features
