@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\UserItems;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ItemController extends Controller
 {
@@ -39,7 +42,7 @@ class ItemController extends Controller
         $item->category = $request->category;
         $item->save();
 
-        return back()->withSuccess('Item Added');
+        return redirect()->route('index');
     }
 
     public function edit($id){
@@ -76,5 +79,72 @@ class ItemController extends Controller
        $item = Item::where('id',$id)->first();
        $item->delete();
        return back()->withSuccess('Item Deleted');
+    }
+
+    public function addToCart(Request $request, $itemId)
+    {
+        $user = Auth::user();
+        $userItem = UserItems::where('user_id', $user->id)
+                            ->where('item_id', $itemId)
+                            ->first();
+
+        if (!$userItem) {
+            $userItem = new UserItems();
+            $userItem->user_id = $user->id;
+            $userItem->item_id = $itemId;
+            $userItem->is_in_cart = true;
+            $userItem->save();
+        }
+        
+        $userItem->is_in_cart = true;
+        $userItem->save();
+        return redirect()->route('index')->with('success', 'Item added to cart successfully');
+    }
+
+    public function addToFavorites(Request $request, $itemId)
+    {
+        $user = Auth::user();
+        $userItem = UserItems::where('user_id', $user->id)
+                            ->where('item_id', $itemId)
+                            ->first();
+
+        if (!$userItem) {
+            $userItem = new UserItems();
+            $userItem->user_id = $user->id;
+            $userItem->item_id = $itemId;
+            $userItem->is_favorite = true;
+            $userItem->save();
+        } 
+        $userItem->is_favorite = true;
+        $userItem->save();
+
+        return redirect()->route('index')->with('success', 'Item added to cart successfully');
+
+    }
+
+    public function getFavorites()
+    {
+        $user = Auth::user();
+
+        $favoriteItemIds = UserItems::where('user_id', $user->id)
+            ->where('is_favorite', true)
+            ->pluck('item_id')
+            ->toArray();
+    
+        $favoriteItems = Item::whereIn('id', $favoriteItemIds)->get();
+        return view('items.favorites', ['favorites' => $favoriteItems]);
+    }
+
+    public function getCart()
+    {
+        $user = Auth::user();
+
+        $cartItemIds = UserItems::where('user_id', $user->id)
+            ->where('is_in_cart', true)
+            ->pluck('item_id')
+            ->toArray();
+
+        $cartItems = Item::whereIn('id', $cartItemIds)->get();
+        return view('items.cart', ['cartItems' => $cartItems]);
     }
 }

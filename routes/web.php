@@ -28,4 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/items/{id}/edit', [ItemController::class,'edit'])->name('items.edit');
     Route::put('/items/{id}/update', [ItemController::class,'update'])->name('items.update');
     Route::post('/items/{id}/delete', [ItemController::class,'destroy'])->name('items.destroy');
+    Route::get('/items/favorites', [ItemController::class, 'getFavorites'])->name('items.favorites');
+    Route::get('/items/cart', [ItemController::class, 'getCart'])->name('items.cart');
+    Route::post('/items/addToCart/{item_id}', [ItemController::class, 'addToCart'])->name('items.addToCart');
+    Route::post('/items/addToFavorites/{item_id}', [ItemController::class, 'addToFavorites'])->name('items.addToFavorites');
 });

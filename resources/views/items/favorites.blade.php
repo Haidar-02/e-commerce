@@ -13,7 +13,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         />
-        <title>Board</title>
+        <title>Favorites</title>
     </head>
     <body>
         <div class="wrapper">
@@ -25,7 +25,7 @@
             <nav id="sidebar">
                 <div class="title">Ecommerce</div>
                 <ul class="list-items">
-                    <li class="active">
+                    <li >
                         <a href="/items/index"
                             ><i class="fas fa-home"></i>Board</a
                         >
@@ -35,7 +35,7 @@
                             ><i class="fa-solid fa-cart-shopping"></i>Cart</a
                         >
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="{{ route('items.favorites') }}"
                             ><i class="fa-solid fa-heart"></i>Favorites</a
                         >
@@ -69,60 +69,24 @@
                 <a href="/items/index">Dashboard</a>
             </div>
             <div>
-                <a href="/items/create" class="btn add-new-item"
-                    >Add New Item</a
-                >
+                <h2> <i class="fa-solid fa-heart"></i> FAVORITES</h2>
             </div>
             <div class="container">
-                @foreach($items as $item)
+                @foreach($favorites as $favorite)
                 <div class="card">
                     <div class="imgBx">
-                        <img src="{{ asset('items/' . $item->image) }}" />
+                        <img src="{{ asset('items/' . $favorite->image) }}" />
                     </div>
                     <div class="contentBx">
-                        <h2 id="itemTitle">{{$item->title}}</h2>
+                        <h2 id="itemTitle">{{$favorite->title}}</h2>
                         <div class="price">
                             <h3>Price :</h3>
-                            <span id="itemPrice"> {{$item->price}}$</span>
+                            <span id="itemPrice"> {{$favorite->price}}$</span>
                         </div>
                         <div class="description">
-                            <p id="itemCategory">{{$item->category}}</p>
-                            <p id="itemDescription">{{$item->description}}</p>
+                            <p id="itemCategory">{{$favorite->category}}</p>
+                            <p id="itemDescription">{{$favorite->description}}</p>
                         </div>
-                            <form action="{{ route('items.addToCart', ['item_id' => $item->id]) }}" method="POST" class="form-cart">
-                            @csrf
-                            <button type="submit" class="cart-btn">
-                                Add to <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </form>
-                        <form action="{{ route('items.addToFavorites', ['item_id' => $item->id]) }}" method="POST" class="form-cart">
-                            @csrf
-                            <button type="submit" class="favorite-btn">
-                                <i class="fa-solid fa-heart"></i>
-                            </button>
-                        </form>
-                        
-                    </div>
-                    
-                    <div class="menu-options">
-                        <form
-                            action="{{ route('items.edit', ['id' => $item->id]) }}"
-                            method="GET"
-                        >
-                            @csrf
-                            <button type="submit" class="btn edit-item-btn">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                        </form>
-                        <form
-                            action="{{ route('items.destroy', ['id' => $item->id]) }}"
-                            method="POST"
-                        >
-                            @csrf
-                            <button type="submit" class="btn delete-item-btn">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
                     </div>
                 </div>
                 @endforeach

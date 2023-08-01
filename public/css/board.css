@@ -109,7 +109,8 @@ body {
 #sidebar .list-items li:first-child {
     border-top: none;
 }
-#sidebar .list-items li a {
+#sidebar .list-items li a,
+#sidebar .list-items li form {
     color: #f2f2f2;
     text-decoration: none;
     font-size: 18px;
@@ -118,7 +119,8 @@ body {
     width: 100%;
     display: block;
 }
-#sidebar .list-items li a i {
+#sidebar .list-items li a i,
+#sidebar .list-items li form i {
     margin-right: 20px;
 }
 #sidebar .list-items .icons {
@@ -174,10 +176,34 @@ body {
     font-size: 40px;
     font-weight: 700;
 }
+li {
+    cursor: pointer;
+}
 .active {
     background-color: #4b3f72;
 }
-
+.logoutBtn {
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    font-variant: small-caps;
+    font-size: 18px;
+    font-weight: 500;
+}
+.form-cart button {
+    width: 100px;
+    cursor: pointer;
+    height: 30px;
+    font-family: "ubuntu", sans-serif;
+    font-size: 18px;
+    color: white;
+    background: #333;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin: 5px;
+}
 .container {
     position: relative;
     display: flex;
