@@ -268,9 +268,12 @@ li {
 
 .container .card .imgBx img {
     position: absolute;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    max-width: 170px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(5deg);
+    transform: translate(-50%, -50%) rotate(3deg);
     filter: drop-shadow(5px 5px 2px black);
     width: 270px;
 }

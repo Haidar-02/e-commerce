@@ -72,7 +72,7 @@ class ItemController extends Controller
         $item->category = $request->category;
         $item->save();
 
-        return back()->withSuccess('Item Updated');
+        return redirect()->route('index')->withSuccess('Item Updated');
     }
 
     public function destroy($id){
@@ -95,7 +95,7 @@ class ItemController extends Controller
             $userItem->is_in_cart = true;
             $userItem->save();
         }
-        
+
         $userItem->is_in_cart = true;
         $userItem->save();
         return redirect()->route('index')->with('success', 'Item added to cart successfully');
